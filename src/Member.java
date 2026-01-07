@@ -1,45 +1,40 @@
-class Member {
+public abstract class Member {
     protected String name;
-    protected String memberID;
-    protected String joinDate;
-    public Member(String name, String memberID, String joinDate) {
+    protected String memberId;
+    public Member(String name, String memberId) {
         this.name = name;
-        this.memberID = memberID;
-        this.joinDate = joinDate;
+        this.memberId = memberId;
     }
-    public void displayInfo() {
-        System.out.println("Member Name: " + name);
-        System.out.println("Member ID: " + memberID);
-        System.out.println("Joined on: " + joinDate);
+    public abstract String getMembershipType();
+    @Override
+    public String toString() {
+        return getMembershipType() + " | ID: " + memberId + " | Name: " + name;
     }
-}
-class StudentMember extends Member {
-    private String discount;
-    public StudentMember(String name, String memberId, String joinDate, String Training) {
-        super(name, memberId, joinDate);  // Call parent constructor
-        this.discount = discount;
+    public static class StudentMember extends Member {
+        public StudentMember(String name, String memberId) {
+            super(name, memberId);
+        }
+        @Override
+        public String getMembershipType() {
+            return "Student Member";
+        }
     }
-    public void showDiscount() {
-        System.out.println(name + " has " + discount);
+    public static class PremiumMember extends Member {
+        public PremiumMember(String name, String memberId) {
+            super(name, memberId);
+        }
+        @Override
+        public String getMembershipType() {
+            return "Premium Member";
+        }
     }
-}
-class PremiumMember extends Member {
-    private int rewardPoints;
-    public PremiumMember(String name, String memberId, String joinDate, int rewardPoints) {
-        super(name, memberId, joinDate);
-        this.rewardPoints = rewardPoints;
-    }
-    public void redeemPoints() {
-        System.out.println(name + " has " + rewardPoints + " reward points - can redeem for free books!\n");
-    }
-}
-class SeniorMember extends Member {
-    private int age;
-    public SeniorMember(String name, String memberId, String joinDate, int age) {
-        super(name, memberId, joinDate);
-        this.age = age;
-    }
-    public void specialAssistance() {
-        System.out.println(name + " (Senior Citizen, age " + age + ") gets home delivery service!\n");
+    public static class SeniorMember extends Member {
+        public SeniorMember(String name, String memberId) {
+            super(name, memberId);
+        }
+        @Override
+        public String getMembershipType() {
+            return "Senior Member";
+        }
     }
 }

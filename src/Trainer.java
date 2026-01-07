@@ -1,48 +1,31 @@
-class Trainer {
+public abstract class Trainer {
     protected String name;
-    protected int experienceYears;
-    protected String specialization;
-    public Trainer(String name, int experienceYears, String specialization) {
+    protected String trainerId;
+    public Trainer(String name, String trainerId) {
         this.name = name;
-        this.experienceYears = experienceYears;
-        this.specialization = specialization;
+        this.trainerId = trainerId;
     }
-    public void introduce() {
-        System.out.println("Hi, I'm " + name);
-        System.out.println("I have " + experienceYears + " years of experience");
-        System.out.println("My specialization is " + specialization);
-    }
-    public void conductSession() {
-        System.out.println(name + " is conducting a training session");
-    }
-}
-class PersonalTrainer extends Trainer {
-    private int maxClientsPerDay;
-    public PersonalTrainer(String name, int experienceYears, String specialization, int maxClientsPerDay) {
-        super(name, experienceYears, specialization);
-        this.maxClientsPerDay = maxClientsPerDay;
-    }
+    public abstract String getTrainerType();
     @Override
-    public void conductSession() {
-        System.out.println(name + " is starting a 1-on-1 personal training session");
-        System.out.println("Focus: customized plan for individual goals");
+    public String toString() {
+        return getTrainerType() + " | ID: " + trainerId + " | Name: " + name;
     }
-    public void displayMaxClients() {
-        System.out.println(name + " can train up to " + maxClientsPerDay + " clients per day");
+    public static class PersonalTrainer extends Trainer {
+        public PersonalTrainer(String name, String trainerId) {
+            super(name, trainerId);
+        }
+        @Override
+        public String getTrainerType() {
+            return "Personal Trainer";
+        }
     }
-}
-class GroupTrainer extends Trainer {
-    private int maxGroupSize;
-    public GroupTrainer(String name, int experienceYears, String specialization, int maxGroupSize) {
-        super(name, experienceYears, specialization);
-        this.maxGroupSize = maxGroupSize;
-    }
-    @Override
-    public void conductSession() {
-        System.out.println(name + " is leading a group class");
-        System.out.println("Group size: up to " + maxGroupSize + " participants");
-    }
-    public void motivateGroup() {
-        System.out.println(name + " says: \"Let's push together – you’ve got this!\"");
+    public static class GroupTrainer extends Trainer {
+        public GroupTrainer(String name, String trainerId) {
+            super(name, trainerId);
+        }
+        @Override
+        public String getTrainerType() {
+            return "Group Trainer";
+        }
     }
 }

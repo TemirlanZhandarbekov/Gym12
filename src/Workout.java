@@ -1,57 +1,43 @@
-class Workout {
-    protected String title;
-    protected String time;
-    public Workout(String title, String time){
-        this.title = title;
-        this.time = time;
+public abstract class Workout {
+    protected String workoutId;
+    protected String name;
+    protected int durationMinutes;
+    public Workout(String workoutId, String name, int durationMinutes) {
+        this.workoutId = workoutId;
+        this.name = name;
+        this.durationMinutes = durationMinutes;
     }
-    public void showWorkout() {
-        System.out.println("Title: " + title);
-        System.out.println("Duration: " + time);
-        System.out.println();
-    }
-}
-class CardioWorkout extends Workout {
-    private String type;
-    public CardioWorkout(String title, String time, String type) {
-        super(title, time);
-        this.type = type;
-    }
+    public abstract String getWorkoutType();
     @Override
-    public void showWorkout() {
-        System.out.println("Title: " + title);
-        System.out.println("Type: " + type);
-        System.out.println("Duration: " + time);
-        System.out.println("Good for your heart!\n");
+    public String toString() {
+        return getWorkoutType() + " | ID: " + workoutId + " | Name: " + name +
+                " | Duration: " + durationMinutes + " min";
     }
-}
-class StrengthWorkout extends Workout {
-    private String muscleGroup;
-
-    public StrengthWorkout(String title, String time, String muscleGroup) {
-        super(title, time);
-        this.muscleGroup = muscleGroup;
+    public static class CardioWorkout extends Workout {
+        public CardioWorkout(String workoutId, String name, int durationMinutes) {
+            super(workoutId, name, durationMinutes);
+        }
+        @Override
+        public String getWorkoutType() {
+            return "Cardio Workout";
+        }
     }
-
-    @Override
-    public void showWorkout() {
-        System.out.println("Title: " + title);
-        System.out.println("Targets: " + muscleGroup);
-        System.out.println("Duration: " + time);
-        System.out.println("Builds muscle power!\n");
+    public static class StrengthWorkout extends Workout {
+        public StrengthWorkout(String workoutId, String name, int durationMinutes) {
+            super(workoutId, name, durationMinutes);
+        }
+        @Override
+        public String getWorkoutType() {
+            return "Strength Workout";
+        }
     }
-}
-class YogaWorkout extends Workout {
-    private String level;
-    public YogaWorkout(String title, String time, String level) {
-        super(title, time);
-        this.level = level;
-    }
-    @Override
-    public void showWorkout() {
-        System.out.println("Title: " + title);
-        System.out.println("Level: " + level);
-        System.out.println("Duration: " + time);
-        System.out.println("Relax and stretch!\n");
+    public static class YogaWorkout extends Workout {
+        public YogaWorkout(String workoutId, String name, int durationMinutes) {
+            super(workoutId, name, durationMinutes);
+        }
+        @Override
+        public String getWorkoutType() {
+            return "Yoga Workout";
+        }
     }
 }
