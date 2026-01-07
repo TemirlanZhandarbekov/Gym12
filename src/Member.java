@@ -8,7 +8,7 @@ public abstract class Member {
     public abstract String getMembershipType();
     @Override
     public String toString() {
-        return getMembershipType() + " | ID: " + memberId + " | Name: " + name;
+        return getMembershipType() + " ID: " + memberId + " Name: " + name;
     }
     public static class StudentMember extends Member {
         public StudentMember(String name, String memberId) {

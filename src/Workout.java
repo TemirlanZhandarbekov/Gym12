@@ -10,7 +10,7 @@ public abstract class Workout {
     public abstract String getWorkoutType();
     @Override
     public String toString() {
-        return getWorkoutType() + " | ID: " + workoutId + " | Name: " + name +
+        return getWorkoutType() + " ID: " + workoutId + " Name: " + name +
                 " | Duration: " + durationMinutes + " min";
     }
     public static class CardioWorkout extends Workout {
