@@ -32,7 +32,7 @@ public class Main {
         } while (choice != 0);
     }
     private static void addMember() {
-        System.out.println("\n--- Add New Member ---");
+        System.out.println("\nAdd New Member ");
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
         System.out.print("Enter member ID: ");
@@ -63,13 +63,13 @@ public class Main {
             System.out.println("\nNo members registered yet.");
             return;
         }
-        System.out.println("\n--- All Members ---");
+        System.out.println("\nAll Members ");
         for (Member m : members) {
             System.out.println(m.toString());
         }
     }
     private static void addTrainer() {
-        System.out.println("\n--- Add New Trainer ---");
+        System.out.println("\nAdd New Trainer ");
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
         System.out.print("Enter trainer ID: ");
@@ -97,13 +97,13 @@ public class Main {
             System.out.println("\nNo trainers registered yet.");
             return;
         }
-        System.out.println("\n--- All Trainers ---");
+        System.out.println("\nAll Trainers ");
         for (Trainer t : trainers) {
             System.out.println(t.toString());
         }
     }
     private static void addWorkout() {
-        System.out.println("\n--- Add New Workout ---");
+        System.out.println("\nAdd New Workout ");
         System.out.print("Enter workout ID: ");
         String id = scanner.nextLine();
         System.out.print("Enter workout name: ");
@@ -137,7 +137,7 @@ public class Main {
             System.out.println("\nNo workouts registered yet.");
             return;
         }
-        System.out.println("\n--- All Workouts ---");
+        System.out.println("\nAll Workouts ");
         for (Workout w : workouts) {
             System.out.println(w.toString());
         }
