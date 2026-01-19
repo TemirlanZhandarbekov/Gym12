@@ -1,14 +1,19 @@
-public abstract class Trainer {
-    protected String name;
-    protected String trainerId;
+package model;
+import exception.InvalidInputException;
+public abstract class Trainer extends Staff {
     public Trainer(String name, String trainerId) {
-        this.name = name;
-        this.trainerId = trainerId;
+        super(name, trainerId);
     }
     public abstract String getTrainerType();
     @Override
-    public String toString() {
-        return getTrainerType() + " ID: " + trainerId + " Name: " + name;
+    public String getRoleDescription() {
+        return getTrainerType() + " Trainer";
+    }
+    public void setName(String name) throws InvalidInputException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidInputException("Trainer name cannot be empty");
+        }
+        this.name = name.trim();
     }
     public static class PersonalTrainer extends Trainer {
         public PersonalTrainer(String name, String trainerId) {

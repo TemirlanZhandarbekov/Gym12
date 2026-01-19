@@ -1,3 +1,5 @@
+package model;
+import exception.InvalidInputException;
 public abstract class Workout {
     protected String workoutId;
     protected String name;
@@ -8,10 +10,16 @@ public abstract class Workout {
         this.durationMinutes = durationMinutes;
     }
     public abstract String getWorkoutType();
+    public void setDurationMinutes(int duration) throws InvalidInputException {
+        if (duration <= 0) {
+            throw new InvalidInputException("Duration must be positive");
+        }
+        this.durationMinutes = duration;
+    }
     @Override
     public String toString() {
-        return getWorkoutType() + " ID: " + workoutId + " Name: " + name +
-                " Duration: " + durationMinutes + " min";
+        return getWorkoutType() + " ID: " + workoutId +
+                " Name: " + name + " Duration: " + durationMinutes + " min";
     }
     public static class CardioWorkout extends Workout {
         public CardioWorkout(String workoutId, String name, int durationMinutes) {
