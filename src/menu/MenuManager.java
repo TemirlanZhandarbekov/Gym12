@@ -28,7 +28,7 @@ public class MenuManager implements Menu {
             displayMenu();
             try {
                 choice = scanner.nextInt();
-                scanner.nextLine(); // consume newline
+                scanner.nextLine();
                 switch (choice) {
                     case 1 -> addMember();
                     case 2 -> viewAllMembers();
@@ -41,7 +41,7 @@ public class MenuManager implements Menu {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error: Please enter a valid number.");
-                scanner.nextLine(); // clear bad input
+                scanner.nextLine();
                 choice = -1;
             } catch (Exception e) {
                 System.out.println("Unexpected error: " + e.getMessage());
