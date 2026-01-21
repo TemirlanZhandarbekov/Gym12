@@ -7,7 +7,6 @@ public abstract class Staff {
         this.name = name;
         this.id = id;
     }
-    // Abstract method that all child classes must implement
     public abstract String getRoleDescription();
     public String getName() {
         return name;
